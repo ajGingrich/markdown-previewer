@@ -1,26 +1,32 @@
-var HTMLWebpackPlugin = require('html-webpack-plugin');
-var HTMLWebpackPluginConfig = new
-HTMLWebpackPlugin({
-	template: __dirname + '/app/index.html',
-	filename: 'index.html',
-	inject: 'body'
-});
-
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-	entry: __dirname + '/app/index.js',
-	module: {
-		loaders: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'babel-loader'
-			}
-		]
-	},
-	output: {
-		filename: 'transformed.js',
-		path: __dirname + '/build'
-	},
-	plugins: [HTMLWebpackPluginConfig]
+  entry: [
+    './src/index'
+  ],
+  module: {
+    loaders: [
+      { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.s?css$/, loader: 'style-loader!css-loader!sass-loader' },
+    ]
+  },
+  resolve: {
+    extensions: ['.js','.scss']
+  },
+  output: {
+    path: path.join(__dirname, '/app'),
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  devtool: 'cheap-eval-source-map',
+  devServer: {
+    contentBase: './app',
+    hot: true
+  },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  ]
 };

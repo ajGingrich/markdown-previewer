@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -8,12 +8,10 @@
     <title>Markdown Previewer</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
-</head>
-<body>
-
-<div id = "markUp" class="col-md-12"></div>
-
-<textarea id = "originalText" class="form-control" rows="25">
+  </head>
+  <body>
+    <div id='root' class="col-md-12"/>
+	<textarea id = "originalText" class="form-control" rows="25">
 Heading
 =======
 
@@ -48,8 +46,6 @@ Spain.
 
  *Andrew Gingrich*
 </textarea>
-
-<div id="test"></div>
-</body>
-
+  </body>
+  <script src="/bundle.js"></script>
 </html>

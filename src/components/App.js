@@ -1,7 +1,11 @@
-var React = require('react');
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import '../assets/stylesheets/stylesheet.css';
 var existText = document.getElementById('originalText').innerHTML;
 
-var MarkDown = React.createClass({
+
+var App = React.createClass({
   getInitialState: function () {
     return {
       userInput: existText
@@ -39,4 +43,4 @@ var MarkDown = React.createClass({
   }
 });
 
-module.exports = MarkDown;
+export default App;
